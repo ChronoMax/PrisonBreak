@@ -63,6 +63,7 @@ public class Test : MonoBehaviour
         {
             Debug.Log("Door cannot be opend");
         }
+
         if (inventory.CanOpenDoor(2))
         {
             Debug.Log("Door can be opend");
@@ -71,6 +72,46 @@ public class Test : MonoBehaviour
         {
             Debug.Log("Door cannot be opend");
         }
+
+        if (inventory.HasItem(i))
+        {
+            Debug.Log("Has key of doom");
+        }
+        else
+        {
+            Debug.Log("has not key of doom");
+        }
+
+        inventory.RemoveItem(i);
+
+        if (inventory.RemoveItem(i))
+        {
+            Debug.Log("Key removed");
+        }
+        else
+        {
+            Debug.Log("key was not removed");
+        }
+
+        if (inventory.CanOpenDoor(1))
+        {
+            Debug.Log("Door can be opend");
+        }
+        else
+        {
+            Debug.Log("Door cannot be opend");
+        }
+
+        if (inventory.HasItem(i))
+        {
+            Debug.Log("Has key of doom");
+        }
+        else
+        {
+            Debug.Log("has not key of doom");
+        }
+
+
     }
 
     public void DebugItem(Item i)
