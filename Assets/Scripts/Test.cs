@@ -22,11 +22,15 @@ public class Test : MonoBehaviour
         DebugItem(j);
     }
 
+
     private void TestInventory()
     {
         Item i = new AccesItem("Key of Doom", 10, 1);
         Item j = new BonusItem("potato of the gods", 50, 50);
         Item k = new BonusItem("Globe of eternal sunshine", 50, 100);
+        Item h = new PuzzelItem("Riddle01", 5, "When do i say hello?", "When i join the call");
+
+        inventory.AddItem(h);
 
         if (inventory.AddItem(i))
         {
@@ -111,7 +115,21 @@ public class Test : MonoBehaviour
             Debug.Log("has not key of doom");
         }
 
+        TestRiddle(h);
+    }
 
+    private void TestRiddle(Item i)
+    {
+        if (i is PuzzelItem)
+        {
+            PuzzelItem h = (PuzzelItem)i;
+            Debug.Log(h.GetRiddle());
+            Debug.Log(h.GetAnwser());
+            Debug.Log(h.IsSolved());
+            Debug.Log(h.checkAnwser("When i join the call"));
+            Debug.Log(h.checkAnwser("number 5 large"));
+            Debug.Log(h.IsSolved());
+        }
     }
 
     public void DebugItem(Item i)

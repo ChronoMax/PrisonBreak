@@ -1,18 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class PuzzelItem : Item
 {
-    private string awnser;
+    private string anwser;
+    private string question;
+    private bool solved;
 
-    public PuzzelItem(string riddle, float weight, string awnser) : base(riddle, weight)
+    public PuzzelItem(string name, float weight, string question, string answer) : base(name, weight)
     {
-        this.awnser = awnser;
+        this.question = question;
+        this.anwser = answer;
+        solved = false;
     }
 
-    public string GetAwnser()
+    public string GetRiddle()
     {
-        return awnser;
+        return question;
+    }
+
+    public string GetAnwser()
+    {
+        return anwser;
+    }
+
+    public bool checkAnwser(string possibleAnwser)
+    {
+        if (possibleAnwser == anwser)
+        {
+            solved = true;
+            return solved;
+        }
+        return false;
+    }
+
+    public bool IsSolved()
+    {
+        return solved;
+    }
+
+    public void Reset()
+    {
+        solved = false;
     }
 }
