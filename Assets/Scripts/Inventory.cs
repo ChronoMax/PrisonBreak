@@ -2,11 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    private List<Item> items = new List<Item>();
-    private float weight = 0;
-    public float maximumWeight;
+    private List<Item> items;
+    private float weight;
+    private float maximumWeight;
+
+    public Inventory()
+    {
+        items = new List<Item>();
+        weight = 0;
+        maximumWeight = 100;
+    }
+
+    public Inventory(float maxiumweight) : this()
+    {
+        this.maximumWeight = maxiumweight;
+    }
+
+    public bool Setmaximumweight(float maxWeight)
+    {
+        if (maxWeight >= weight)
+        {
+            maximumWeight = maxWeight;
+            return true;
+        }
+
+        return false;
+    }
 
     public bool AddItem(Item i)
     {
