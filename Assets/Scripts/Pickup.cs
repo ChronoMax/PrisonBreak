@@ -10,12 +10,25 @@ public abstract class Pickup : MonoBehaviour, Iinteractable
     private void Start()
     {
         gameObject.tag = "Pickup";
+        GameManager.Instance.RegisterPickupItem(this);
     }
 
     public void Actoin(PlayerManager player)
     {
-        player.AddItem(CreateItem());
-        Destroy(gameObject);
+        if (player.AddItem(CreateItem()))
+        {
+            Remove();
+        }
+    }
+
+    public void Remove()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Respawn()
+    {
+        gameObject.SetActive(false);
     }
 
     public abstract Item CreateItem();

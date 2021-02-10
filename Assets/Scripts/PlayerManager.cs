@@ -16,7 +16,20 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+
+        }
+    }
+
+    public void DropItem(string name)
+    {
+
     }
 
     public bool AddItem(Item i )
