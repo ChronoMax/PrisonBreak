@@ -57,16 +57,16 @@ public class Inventory
         return succes;
     }
 
-    public Item GetItemWithName(string name)
-    {
-        for (int i = 0; i < items.Count; i++)
-        {
-            if (items[])
-            {
+    //public Item GetItemWithName(string name)
+    //{
+    //    for (int i = 0; i < items.Count; i++)
+    //    {
+    //        if (items[])
+    //        {
 
-            }
-        }
-    }
+    //        }
+    //    }
+    //}
 
     public bool HasItem(Item i)
     {

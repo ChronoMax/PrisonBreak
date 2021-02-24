@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void DropItem(string name, Vector3 pos)
-    {
-        worldItems[name].Respawn(pos);
-    }
+    //public void DropItem(string name, Vector3 pos)
+    //{
+    //    worldItems[name].Respawn(pos);
+    //}
 }
