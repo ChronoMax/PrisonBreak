@@ -15,103 +15,47 @@ public class Test : MonoBehaviour
 
     public void TestCreateItem()
     {
-        Item i = new AccesItem("Key", 10, 1);
+        Debug.Log("============== Testing creation of items =============");
+        Item i = new AccesItem("Key of doom", 10, 1);
         DebugItem(i);
 
-        Item j = new BonusItem("potato of the gods", 2, 100);
+        Item j = new BonusItem("Potato of the gods", 2, 100);
         DebugItem(j);
     }
 
     private void TestInventory()
     {
-        Item i = new AccesItem("Key of Doom", 10, 1);
-        Item j = new BonusItem("potato of the gods", 50, 50);
+        Debug.Log("============== Testing inventory functionality =============");
+        Item i = new AccessItem("Key of doom", 10, 1);
+        Item j = new BonusItem("Potato of the gods", 50, 50);
         Item k = new BonusItem("Globe of eternal sunshine", 50, 100);
 
         if (inventory.AddItem(i))
         {
-            Debug.Log("Succes" + i.GetName());
+            Debug.Log("Added " + i.GetName() + " to the inventory");
         }
         else
         {
-            Debug.Log("Failed" + i.GetName());
+            Debug.Log("Failed to add " + i.GetName() + " to the inventory");
         }
+
         if (inventory.AddItem(j))
         {
-            Debug.Log("Succes" + j.GetName());
+            Debug.Log("Added " + j.GetName() + " to the inventory");
         }
         else
         {
-            Debug.Log("Failed" + j.GetName());
+            Debug.Log("Failed to add " + j.GetName() + " to the inventory");
         }
+
         if (inventory.AddItem(k))
         {
-            Debug.Log("Succes" + k.GetName());
+            Debug.Log("Added " + k.GetName() + " to the inventory");
         }
         else
         {
-            Debug.Log("Failed" + k.GetName());
+            Debug.Log("Failed to add " + k.GetName() + " to the inventory");
         }
-
-        inventory.DebugInventory();
-
-        if (inventory.CanOpenDoor(1))
-        {
-            Debug.Log("Door can be opend");
-        }
-        else
-        {
-            Debug.Log("Door cannot be opend");
-        }
-
-        if (inventory.CanOpenDoor(2))
-        {
-            Debug.Log("Door can be opend");
-        }
-        else
-        {
-            Debug.Log("Door cannot be opend");
-        }
-
-        if (inventory.HasItem(i))
-        {
-            Debug.Log("Has key of doom");
-        }
-        else
-        {
-            Debug.Log("has not key of doom");
-        }
-
-        inventory.RemoveItem(i);
-
-        if (inventory.RemoveItem(i))
-        {
-            Debug.Log("Key removed");
-        }
-        else
-        {
-            Debug.Log("key was not removed");
-        }
-
-        if (inventory.CanOpenDoor(1))
-        {
-            Debug.Log("Door can be opend");
-        }
-        else
-        {
-            Debug.Log("Door cannot be opend");
-        }
-
-        if (inventory.HasItem(i))
-        {
-            Debug.Log("Has key of doom");
-        }
-        else
-        {
-            Debug.Log("has not key of doom");
-        }
-
-
     }
 
     public void DebugItem(Item i)
