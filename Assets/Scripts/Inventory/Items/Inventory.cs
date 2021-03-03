@@ -1,12 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory
 {
-    private List<Item> items = new List<Item>();
-    private float weight = 0;
-    public float maximumWeight;
+    private List<Item> items;
+    private float weight;
+    private float maximumWeight;
+
+    public Inventory()
+    {
+        items = new List<Item>();
+        weight = 0;
+        maximumWeight = 100;
+    }
+
+    public Inventory(float maximumWeight) : this()
+    {
+        this.maximumWeight = maximumWeight;
+    }
+
+    public bool SetMaximumWeight(float maxWeight)
+    {
+        if (maxWeight >= weight)
+        {
+            maximumWeight = maxWeight;
+            return true;
+        }
+
+        return false;
+    }
 
     public bool AddItem(Item i)
     {
@@ -20,18 +45,31 @@ public class Inventory : MonoBehaviour
         {
             return false;
         }
-
     }
 
     public bool RemoveItem(Item i)
     {
-        bool succes = items.Remove(i);
-        if (succes)
+        bool success = items.Remove(i);
+
+        if (success)
         {
             weight -= i.GetWeight();
         }
 
-        return succes;
+        return success;
+    }
+
+    public Item GetItemWithName(string name)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].GetName() == name)
+            {
+                return items[i];
+            }
+        }
+
+        return null;
     }
 
     public bool HasItem(Item i)
@@ -47,12 +85,25 @@ public class Inventory : MonoBehaviour
         {
             if (item is AccesItem)
             {
-                if (((AccesItem) item).OpensDoor(id))
+                if (((AccesItem)item).OpensDoor(id))
                 {
                     result = true;
                 }
-            }            
+            }
         }
+
+        return result;
+    }
+
+    public string[] GetItemNames()
+    {
+        string[] result = new string[items.Count];
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            result[i] = items[i].GetName();
+        }
+
         return result;
     }
 
@@ -63,9 +114,7 @@ public class Inventory : MonoBehaviour
 
     public float GetCurrentWeight()
     {
-        float currentWeight = weight;
-
-        return currentWeight;
+        return weight;
     }
 
     public void DebugInventory()

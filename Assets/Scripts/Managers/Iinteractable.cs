@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface Iinteractable
+public interface IInteractable
 {
-    void Actoin(PlayerManager player);
+    void Action(PlayerManager player);
 }

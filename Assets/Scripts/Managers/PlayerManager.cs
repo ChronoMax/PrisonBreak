@@ -41,8 +41,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("Pickup"))
         {
-            Iinteractable i = hit.gameObject.GetComponent<Iinteractable>();
-            i.Actoin(this);
+            IInteractable i = hit.gameObject.GetComponent<IInteractable>();
+            i.Action(this);
         }
+    }
+    public bool CanOpenDoor(int id)
+    {
+        return inventory.CanOpenDoor(id);
+    }
+
+    public string[] GetItemNames()
+    {
+        return inventory.GetItemNames();
     }
 }

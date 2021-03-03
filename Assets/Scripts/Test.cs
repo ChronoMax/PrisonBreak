@@ -28,7 +28,7 @@ public class Test : MonoBehaviour
     private void TestInventory()
     {
         Debug.Log("============== Testing inventory functionality =============");
-        Item i = new AccessItem("Key of doom", 10, 1);
+        Item i = new AccesItem("Key of doom", 10, 1);
         Item j = new BonusItem("Potato of the gods", 50, 50);
         Item k = new BonusItem("Globe of eternal sunshine", 50, 100);
 
