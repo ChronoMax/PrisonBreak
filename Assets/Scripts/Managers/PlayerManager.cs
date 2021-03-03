@@ -40,7 +40,14 @@ public class PlayerManager : MonoBehaviour
 
     public void DropItem(string name)
     {
+        Item i = inventory.GetItemWithName(name);
 
+        if (i != null)
+        {
+            inventory.RemoveItem(i);
+            GameManager.Instance.DropItem(name, transform.position + transform.forward);
+        }
+        GameManager.Instance.TriggerInventoryUIUpdate();
     }
 
     public bool AddItem(Item i )
