@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public UIManager ui;
+    //public UIManager ui;
 
     Dictionary<string, Pickup> worldItems = new Dictionary<string, Pickup>();
 
@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
         return worldItems[name];
     }
 
-    public void TriggerInventoryUIUpdate()
-    {
-        ui.UpdateInventoryUI();
-    }
+    //public void TriggerInventoryUIUpdate()
+    //{
+    //    ui.UpdateInventoryUI();
+    //}
 }
