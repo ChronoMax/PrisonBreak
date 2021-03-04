@@ -20,9 +20,10 @@ public class PlayerManager : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             RaycastHit hit;
-
-            if (Physics.SphereCast(transform.position, 0.2f, directionSetter.forward, out hit, 2))
+            //Debug.DrawLine(directionSetter.position, directionSetter.position+directionSetter.forward * 2f, Color.red, 1f);
+            if (Physics.SphereCast(directionSetter.position, 0.1f, directionSetter.forward, out hit, 2))
             {
+                //Debug.Log(hit.collider.gameObject.name);
                 IInteractable i = hit.collider.gameObject.GetComponent<IInteractable>();
                 if (i != null)
                 {
