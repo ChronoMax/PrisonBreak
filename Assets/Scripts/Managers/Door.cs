@@ -21,7 +21,13 @@ public class Door : MonoBehaviour, IInteractable
     {
         if (open)
         {
+            cellDoorAnimator.SetBool("Close", false);
             cellDoorAnimator.SetBool("Open", true);
+        }
+        else if (!open)
+        {
+            cellDoorAnimator.SetBool("Open", false);
+            cellDoorAnimator.SetBool("Close", true);
         }
     }
 
