@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Computer : MonoBehaviour, IInteractable
 {
 
     public GameObject computerUI;
+    public InputField codeField;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,16 @@ public class Computer : MonoBehaviour, IInteractable
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         fps.enabled = true;
+    }
+
+    public void OnClickGetGoogleCode()
+    {
+
+    }
+
+    public void OnClickGoogleSignIn()
+    {
+
     }
 
     public void Action(PlayerManager player)
