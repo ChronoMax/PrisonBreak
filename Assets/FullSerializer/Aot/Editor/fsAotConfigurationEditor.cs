@@ -12,39 +12,23 @@ namespace FullSerializer {
 	[InitializeOnLoad]
 	public static class PlayStateNotifier {
 		static PlayStateNotifier() {
-#if UNITY_2017_2_OR_NEWER
-			EditorApplication.playModeStateChanged += ModeChanged;
-#else
-            EditorApplication.playmodeStateChanged += ModeChanged;
-#endif
+			EditorApplication.playmodeStateChanged += ModeChanged;
 		}
 
-		private static void LogCandidateTypes() {
-			Debug.Log("There are " + fsAotCompilationManager.AotCandidateTypes.Count + " candidate types");
-			foreach (fsAotConfiguration target in Resources.FindObjectsOfTypeAll<fsAotConfiguration>()) {
-				var seen = new HashSet<string>(target.aotTypes.Select(t => t.FullTypeName));
-				foreach (Type type in fsAotCompilationManager.AotCandidateTypes) {
-					if (seen.Contains(type.FullName) == false) {
-						target.aotTypes.Add(new fsAotConfiguration.Entry(type));
-						EditorUtility.SetDirty(target);
+		private static void ModeChanged () {
+			if (!EditorApplication.isPlayingOrWillChangePlaymode && EditorApplication.isPlaying) {
+				//Debug.Log("There are " + fsAotCompilationManager.AotCandidateTypes.Count + " candidate types");
+				foreach (fsAotConfiguration target in Resources.FindObjectsOfTypeAll<fsAotConfiguration>()) {
+					var seen = new HashSet<string>(target.aotTypes.Select(t => t.FullTypeName));
+					foreach (Type type in fsAotCompilationManager.AotCandidateTypes) {
+						if (seen.Contains(type.FullName) == false) {
+							target.aotTypes.Add(new fsAotConfiguration.Entry(type));
+							EditorUtility.SetDirty(target);
+						}
 					}
 				}
 			}
 		}
-
-#if UNITY_2017_2_OR_NEWER
-		private static void ModeChanged (PlayModeStateChange c) {
-			if (c == PlayModeStateChange.EnteredPlayMode) {
-				LogCandidateTypes();
-			}
-		}
-#else
-        private static void ModeChanged () {
-            if (!EditorApplication.isPlayingOrWillChangePlaymode && EditorApplication.isPlaying) {
-				LogCandidateTypes();
-			}
-		}
-#endif
 	}
 
 	[CustomEditor(typeof(fsAotConfiguration))]

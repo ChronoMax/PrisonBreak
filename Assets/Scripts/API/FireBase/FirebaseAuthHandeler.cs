@@ -8,10 +8,10 @@ public static class FirebaseAuthHandeler
 
     public static void SignInWithToken(string id_token, string provider_id)
     {
-        var payload = $"{{\"postBody\":\"id_token ={id_token} & providerId ={provider_id}\",\"requestUri\":\"http://localhost\",\"returnIdpCredential\":true,\"returnSecureToken\":true}}";
-                    RestClient.Post($"https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key={apiKey}", payload).Then(response =>
-                    {
-                        Debug.Log(response.Text);
-                    });
+        var payload = $"{{\"postBody\":\"id_token={id_token}&providerId={provider_id}\",\"requestUri\":\"http://localhost\",\"returnIdpCredential\":true,\"returnSecureToken\":true}}";
+        RestClient.Post($"https://identitytoolkit.googleapis.com/v1/accounts:signInWithIdp?key={apiKey}", payload).Then(response =>
+        {
+            Debug.Log(response.Text);
+        }).Catch(Debug.Log);
     }
 }
