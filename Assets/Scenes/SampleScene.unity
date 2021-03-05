@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   computerUI: {fileID: 1603912505}
+  codeField: {fileID: 858310712}
 --- !u!1001 &83319085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1703,7 +1704,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 79410159}
         m_TargetAssemblyTypeName: Computer, Assembly-CSharp
-        m_MethodName: OnCloseClick
+        m_MethodName: OnClickGetGoogleCode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10523,7 +10524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1603912506
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12006,7 +12007,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 79410159}
         m_TargetAssemblyTypeName: Computer, Assembly-CSharp
-        m_MethodName: OnCloseClick
+        m_MethodName: OnClickGoogleSignIn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

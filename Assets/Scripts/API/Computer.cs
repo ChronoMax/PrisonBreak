@@ -47,12 +47,16 @@ public class Computer : MonoBehaviour, IInteractable
 
     public void OnClickGetGoogleCode()
     {
-
+        GoogleAuthHandler.GetUserCode();
     }
 
     public void OnClickGoogleSignIn()
     {
-
+        Debug.Log("ButtonClick");
+        GoogleAuthHandler.ExchangeAuthCodeWithToken(codeField.text, idToken =>
+        {
+            FirebaseAuthHandeler.SignInWithToken(idToken, "google.com");
+        });
     }
 
     public void Action(PlayerManager player)

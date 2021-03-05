@@ -53,8 +53,15 @@ public class GmailAPI : MonoBehaviour
         }
     }
 
-    void Start()
+    public void Start()
     {
+        //StartCoroutine(Testing());
+    }
+
+    IEnumerator Testing()
+    {
+        yield return new WaitForSeconds(15);
+        Debug.Log("Testing....");
         StartCoroutine(GetRequestAPI("https://gmail.googleapis.com/gmail/v1/users/slprisonbreakassignment@gmail.com/messages"));
     }
 }
