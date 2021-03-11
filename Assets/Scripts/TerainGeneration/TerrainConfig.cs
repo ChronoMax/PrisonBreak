@@ -16,7 +16,7 @@ public class TerrainConfig : MonoBehaviour
 
     [Range(1f, 3f)]
     public float lacunarity = 1.8f;
-
+    
     [Range(0f, 1f)]
     public float persistence = 0.5f;
 

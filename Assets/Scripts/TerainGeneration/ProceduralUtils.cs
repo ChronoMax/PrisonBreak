@@ -28,6 +28,13 @@ public static class ProceduralUtils
         return texture;
     }
 
+    public static float[,] IslandFilter(float [,] data, float innerRadius, float outerRadius)
+    {
+        //do stuff
+
+        return data;
+    }
+
     public static float[,] GenerateTerrainData(int width, int height, float scale, float baseAmplitude, int octaves, float lacunarity, float persistence, Vector3 offset)
     {
         float[,] result = new float[width, height];
@@ -59,13 +66,13 @@ public static class ProceduralUtils
             }
         }
 
-        for (int y = 0; y < height; y++)
+        /*for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
                 //result[x, y] = Mathf.InverseLerp(minValue, maxValue, result[x, y]*baseAmplitude);
             }
-        }
+        }*/
 
         return result;
     }

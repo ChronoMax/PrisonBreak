@@ -1,0 +1,9 @@
+public class UtilsCS
+{
+    public static float Map(float value, float valueMin, float valueMax, float resultMin, float resultMax)
+    {
+        if (resultMin == resultMax) return resultMin;
+        if (valueMin == valueMax) return resultMax;
+        return resultMin + (value - valueMin) * (resultMax - resultMin) / (valueMax - valueMin);
+    }
+}
