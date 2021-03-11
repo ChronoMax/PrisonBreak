@@ -4,7 +4,6 @@ using UnityEngine;
 
 public static class ProceduralUtils
 {
-
     public static Texture2D GenerateTexture2D(float[,] data)
     {
         int width = data.GetLength(0);
@@ -29,7 +28,7 @@ public static class ProceduralUtils
         return texture;
     }
 
-    public static float[,] GenerateTerainData(int width, int height, float octwaves, float lacunarity, float persistence, Vector2 offset)
+    public static float[,] GenerateTerrainData(int width, int height, float scale, float baseAmplitude, int octaves, float lacunarity, float persistence, Vector3 offset)
     {
         float[,] result = new float[width, height];
 
@@ -41,13 +40,13 @@ public static class ProceduralUtils
             for (int x = 0; x < width; x++)
             {
                 result[x, y] = 0f;
-                float frequency = 0.05f;
-                float ampiltude = 1;
-                for (int o = 0; o < octwaves; o++)
+                float frequency = scale;
+                float amplitude = baseAmplitude;
+                for (int o = 0; o < octaves; o++)
                 {
                     frequency *= lacunarity;
-                    ampiltude *= persistence;
-                    result[x, y] = GetPerlinValue(x + offset.x, y + offset.y, frequency, ampiltude);
+                    amplitude *= persistence;
+                    result[x, y] += (GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude) + offset.z / 100.0f);
                     if (result[x, y] > maxValue)
                     {
                         maxValue = result[x, y];
@@ -57,7 +56,6 @@ public static class ProceduralUtils
                         minValue = result[x, y];
                     }
                 }
-
             }
         }
 
@@ -65,17 +63,16 @@ public static class ProceduralUtils
         {
             for (int x = 0; x < width; x++)
             {
-                result[x, y] = Mathf.InverseLerp(minValue, maxValue, result[x, y]);
+                //result[x, y] = Mathf.InverseLerp(minValue, maxValue, result[x, y]*baseAmplitude);
             }
         }
 
         return result;
-
     }
 
     public static float GetPerlinValue(float x, float y, float frequency, float amplitude)
     {
-        float result = Mathf.PerlinNoise(x*frequency, y*frequency)* amplitude;
+        float result = (Mathf.PerlinNoise(x * frequency, y * frequency) * 2f - 1) * amplitude;
 
         return result;
     }

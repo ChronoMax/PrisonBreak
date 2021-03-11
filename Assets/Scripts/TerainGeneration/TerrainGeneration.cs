@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class TerrainGeneration : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TerrainManager : TerrainConfig
     {
-        
-    }
+        public Terrain t;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        protected override void UpdateTerrainData(float[,] data)
+        {
+            t.terrainData.heightmapResolution = size.x;
+            t.terrainData.SetHeights(0, 0, data);
+        }
     }
 }
