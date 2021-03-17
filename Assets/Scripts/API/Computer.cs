@@ -9,6 +9,7 @@ public class Computer : MonoBehaviour, IInteractable
 
     public GameObject computerUI;
     public InputField codeField;
+    public string emailRecieved;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +19,6 @@ public class Computer : MonoBehaviour, IInteractable
 
     public void AccesComputer()
     {
-        Debug.Log("ComputerActivated");        
-
         FirstPersonController fps = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         computerUI.gameObject.SetActive(!computerUI.gameObject.activeSelf);
         if (computerUI.gameObject.activeSelf)
@@ -52,7 +51,6 @@ public class Computer : MonoBehaviour, IInteractable
 
     public void OnClickGoogleSignIn()
     {
-        Debug.Log("ButtonClick");
         GoogleAuthHandler.ExchangeAuthCodeWithToken(codeField.text, idToken =>
         {
             FirebaseAuthHandeler.SignInWithToken(idToken, "google.com");
