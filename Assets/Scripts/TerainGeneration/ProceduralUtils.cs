@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public static class ProceduralUtils
@@ -28,9 +30,34 @@ public static class ProceduralUtils
         return texture;
     }
 
-    public static float[,] IslandFilter(float [,] data, float innerRadius, float outerRadius)
+    public static float[,] IslandFilter(float[,] data, float innerRadius, float outerRadius)
     {
-        //do stuff
+        Vector2Int center = new Vector2Int(data.GetLength(0) / 2, data.GetLength(1) / 2);
+
+        for (int y = 0; y < data.GetLength(1); y++)
+        {
+            for (int x = 0; x < data.GetLength(0); x++)
+            {
+                Vector2Int point = new Vector2Int(x, y);
+                float distance = Vector2.Distance(center, point);
+                float multiplier;
+
+                if (distance < innerRadius)
+                {
+                    multiplier = 1.0f;
+                }
+                else if (distance > outerRadius)
+                {
+                    multiplier = 0.0f;
+                }
+                else
+                {
+                    multiplier = Utils.Map(distance, innerRadius, outerRadius, 1f, 0f);
+                }
+
+                data[x, y] *= multiplier;
+            }
+        }
 
         return data;
     }
@@ -53,11 +80,13 @@ public static class ProceduralUtils
                 {
                     frequency *= lacunarity;
                     amplitude *= persistence;
-                    result[x, y] += (GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude) + offset.z / 100.0f);
+                    result[x, y] += (GetPerlinValue(x + offset.x, y + offset.y, frequency, amplitude) +
+                                     offset.z / 100.0f);
                     if (result[x, y] > maxValue)
                     {
                         maxValue = result[x, y];
                     }
+
                     if (result[x, y] < minValue)
                     {
                         minValue = result[x, y];
@@ -66,15 +95,66 @@ public static class ProceduralUtils
             }
         }
 
-        /*for (int y = 0; y < height; y++)
+        return result;
+    }
+
+    [Serializable]
+    public struct LayerData
+    {
+        public string name;
+        public float heightTrigger;
+        public float fadeAmount;
+        public LayerData(string name, float heightTrigger, float fadeAmount)
+        {
+            this.name = name;
+            this.heightTrigger = heightTrigger;
+            this.fadeAmount = fadeAmount;
+        }
+    }
+
+    public static float[,,] GenerateTextureData(float[,] terrainData, LayerData[] layers)
+    {
+        int width = terrainData.GetLength(0);
+        int height = terrainData.GetLength(1);
+        float[,,] map = new float[width, height, layers.Length];
+
+        for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)
             {
-                //result[x, y] = Mathf.InverseLerp(minValue, maxValue, result[x, y]*baseAmplitude);
-            }
-        }*/
+                float value = terrainData[x, y];
+                for (int l = 0; l < layers.Length; l++)
+                {
+                    float mapValue;
+                    if (l == 0)
+                    {
+                        mapValue = Mathf.Clamp(Utils.Map(value, layers[l].heightTrigger, layers[l].heightTrigger + layers[l].fadeAmount, 1f, 0f), 0, 1);
+                    }
+                    else
+                    {
+                        if (value > layers[l].heightTrigger)
+                        {
+                            //fade up
+                            mapValue = Mathf.Clamp(Utils.Map(value, layers[l].heightTrigger, layers[l].heightTrigger + layers[l].fadeAmount, 1f, 0f), 0, 1);
+                        }
+                        else if (value < layers[l - 1].heightTrigger + layers[l - 1].fadeAmount)
+                        {
+                            //fade down
+                            mapValue = Mathf.Clamp(Utils.Map(value, layers[l - 1].heightTrigger, layers[l - 1].heightTrigger + layers[l - 1].fadeAmount, 0f, 1f), 0, 1);
+                        }
+                        else
+                        {
+                            //Middle
+                            mapValue = 1;
+                        }
+                    }
 
-        return result;
+                    map[x, y, l] = mapValue;
+                }
+            }
+        }
+
+        return map;
     }
 
     public static float GetPerlinValue(float x, float y, float frequency, float amplitude)

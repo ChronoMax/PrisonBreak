@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainConfig : MonoBehaviour
 {
+    public bool autoUpdate = false;
     public Vector2Int size = new Vector2Int(512, 512);
 
     public float scale = 5f;
@@ -16,16 +18,11 @@ public class TerrainConfig : MonoBehaviour
 
     [Range(1f, 3f)]
     public float lacunarity = 1.8f;
-    
+
     [Range(0f, 1f)]
     public float persistence = 0.5f;
 
     public Vector3 offset = Vector2.zero;
-
-    void Start()
-    {
-        UpdateTerrainData(GenerateTerrainData());
-    }
 
     private float[,] GenerateTerrainData()
     {
@@ -40,6 +37,6 @@ public class TerrainConfig : MonoBehaviour
 
     private void OnValidate()
     {
-        UpdateTerrainData(GenerateTerrainData());
+        if (autoUpdate) UpdateTerrainData(GenerateTerrainData());
     }
 }
