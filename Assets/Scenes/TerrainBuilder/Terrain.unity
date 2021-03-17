@@ -327,17 +327,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1708842865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad764024c1c198f4e8951a627bde848b, type: 3}
+  m_Script: {fileID: 11500000, guid: 788a596920c23584c948a4fc610d79cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoUpdate: 1
   size: {x: 1024, y: 1024}
-  scale: 2.1
-  baseAmplitude: 0.315
-  octaves: 9
-  lacunarity: 1.93
-  persistence: 0.478
-  offset: {x: 0, y: 0, z: 0.4}
+  scale: 1
+  baseAmplitude: 0.67
+  octaves: 5
+  lacunarity: 2.47
+  persistence: 0.424
+  offset: {x: 1.11, y: 12487, z: 3.12}
   t: {fileID: 1708842868}
+  layers: []
+  innerRadius: 300
+  outerRadius: 540
 --- !u!154 &1708842867
 TerrainCollider:
   m_ObjectHideFlags: 0
