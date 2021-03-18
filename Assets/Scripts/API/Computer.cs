@@ -11,7 +11,7 @@ public class Computer : MonoBehaviour, IInteractable
     public InputField codeField;
     public static string emailText;
     public Text emailTextHolder, infoText;
-
+    public Animator doorAnimator;
     private int secondsToWait = 5;
 
     // Start is called before the first frame update
@@ -95,6 +95,7 @@ public class Computer : MonoBehaviour, IInteractable
     public void OnClickOpenDoor()
     {
         Debug.Log("open button clicked");
+        doorAnimator.SetBool("play", true);
     }
 
     public void Action(PlayerManager player)
