@@ -9,7 +9,6 @@ public class Computer : MonoBehaviour, IInteractable
 
     public GameObject computerUI;
     public InputField codeField;
-    public string emailRecieved;
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +54,11 @@ public class Computer : MonoBehaviour, IInteractable
         {
             FirebaseAuthHandeler.SignInWithToken(idToken, "google.com");
         });
+    }
+
+    public static void EmailRecieved(string emailRecieved)
+    {
+        Debug.Log(emailRecieved);
     }
 
     public void Action(PlayerManager player)

@@ -20,6 +20,8 @@ public static class FirebaseAuthHandeler
             Debug.Log("The email adress= " + GoogleInfo["email"].Value);
             email = GoogleInfo["email"].Value;
 
+            Computer.EmailRecieved(email);
+
 
             //this is the JSON respone:
             //"federatedId": "https://accounts.google.com/107842334442273950098",
