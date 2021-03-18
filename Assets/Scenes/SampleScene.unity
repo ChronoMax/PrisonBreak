@@ -692,8 +692,10 @@ MonoBehaviour:
   loginUI: {fileID: 1956982282}
   computerUI: {fileID: 1603912505}
   commandScreen: {fileID: 1072123995}
+  OpenButton: {fileID: 885995868}
   codeField: {fileID: 858310712}
   emailTextHolder: {fileID: 1471483124}
+  infoText: {fileID: 1881319720}
 --- !u!1001 &83319085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9669,7 +9671,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 885995869}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 79410159}
+        m_TargetAssemblyTypeName: Computer, Assembly-CSharp
+        m_MethodName: OnClickOpenDoor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &885995869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15750,7 +15764,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.6509434, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.5188679, g: 0, b: 0, a: 1}
     m_SelectedColor: {r: 0.4056604, g: 0, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
