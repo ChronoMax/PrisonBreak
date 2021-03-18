@@ -6,9 +6,13 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Computer : MonoBehaviour, IInteractable
 {
-
-    public GameObject computerUI;
+    public GameObject loginUI, computerUI, commandScreen;
+    public Button OpenButton;
     public InputField codeField;
+    public static string emailText;
+    public Text emailTextHolder, infoText;
+    public Animator doorAnimator;
+    private int secondsToWait = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -18,8 +22,6 @@ public class Computer : MonoBehaviour, IInteractable
 
     public void AccesComputer()
     {
-        Debug.Log("ComputerActivated");        
-
         FirstPersonController fps = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         computerUI.gameObject.SetActive(!computerUI.gameObject.activeSelf);
         if (computerUI.gameObject.activeSelf)
@@ -52,11 +54,48 @@ public class Computer : MonoBehaviour, IInteractable
 
     public void OnClickGoogleSignIn()
     {
-        Debug.Log("ButtonClick");
         GoogleAuthHandler.ExchangeAuthCodeWithToken(codeField.text, idToken =>
         {
             FirebaseAuthHandeler.SignInWithToken(idToken, "google.com");
+            StartCoroutine(startNewScreen(secondsToWait));
         });
+    }
+
+    public static void ReceviedEmailHandller(string emailRecieved)
+    {
+        emailText = emailRecieved;
+    }
+
+    private IEnumerator startNewScreen(int waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        ConsoleScreen();
+        yield return waitTime;
+    }
+
+    private void ConsoleScreen()
+    {
+        emailTextHolder.text = emailText;
+        loginUI.SetActive(false);
+        commandScreen.SetActive(true);
+
+        switch (emailText)
+        {
+            case "slprisonbreakassignment@gmail.com":
+                OpenButton.interactable = true;
+                break;
+            default:
+                OpenButton.interactable = false;
+                infoText.color = Color.red;
+                infoText.text = "unauthorized login detected";
+                break;
+        }
+    }
+
+    public void OnClickOpenDoor()
+    {
+        Debug.Log("open button clicked");
+        doorAnimator.SetBool("play", true);
     }
 
     public void Action(PlayerManager player)
