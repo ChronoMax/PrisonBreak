@@ -233,6 +233,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2737578447417945850}
   - component: {fileID: 2391341381429833880}
+  - component: {fileID: 692890934}
+  - component: {fileID: 2948756734908540746}
   m_Layer: 0
   m_Name: Firewood_Pack_vbwhfi1iwVar1
   m_TagString: Untagged
@@ -309,6 +311,35 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7176000804484841644}
   m_Enabled: 1
+--- !u!114 &692890934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939983337039682511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91d7432c2da605b4aab68bac3078b803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: RaftPiece_3
+  weight: 10
+  sprite: {fileID: 0}
+  RaftPieceID: 3
+--- !u!65 &2948756734908540746
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939983337039682511}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.20098561, y: 0.08211417, z: 0.09360832}
+  m_Center: {x: -0.001579076, y: 0.0015512966, z: -0.001579076}
 --- !u!1 &1012854254120457946
 GameObject:
   m_ObjectHideFlags: 0
