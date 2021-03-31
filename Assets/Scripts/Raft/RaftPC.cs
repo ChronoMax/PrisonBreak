@@ -42,6 +42,7 @@ public class RaftPC : MonoBehaviour, IInteractable
         if (CountOfLogs == 4 && CountOfLogs !<= 4)
         {
             Instantiate(raftPrefab, spawnpoint);
+            CountOfLogs = 0;
         }
 
     }
