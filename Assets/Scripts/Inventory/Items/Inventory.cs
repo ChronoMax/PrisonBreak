@@ -116,15 +116,4 @@ public class Inventory
     {
         return weight;
     }
-
-    public void DebugInventory()
-    {
-        Debug.Log("Inventory has " + Count() + " items");
-        Debug.Log("Total weight: " + GetCurrentWeight());
-
-        foreach (Item item in items)
-        {
-            Debug.Log(item.GetName() + "-----" + item.GetWeight() + "Kg");
-        }
-    }
 }
