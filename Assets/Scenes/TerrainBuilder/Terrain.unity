@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 27647159, guid: c3890e84ca4e2fa408ee87ae92fb8ebd, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f502351826a7214797c7fd9f79a5bab, type: 3}
     - target: {fileID: 7979911675694174186, guid: c3890e84ca4e2fa408ee87ae92fb8ebd, type: 3}
       propertyPath: m_Name
       value: RaftPiece_1
@@ -774,6 +778,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 692890934, guid: 7b52918ad1a735240a5f0c80872b739b, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8f502351826a7214797c7fd9f79a5bab, type: 3}
     - target: {fileID: 939983337039682511, guid: 7b52918ad1a735240a5f0c80872b739b, type: 3}
       propertyPath: m_Name
       value: RaftPiece_3
@@ -925,7 +933,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: RaftPiece_4
   weight: 10
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8f502351826a7214797c7fd9f79a5bab, type: 3}
   RaftPieceID: 4
 --- !u!114 &1330000621 stripped
 MonoBehaviour:
@@ -1027,7 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: RaftPiece_2
   weight: 10
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8f502351826a7214797c7fd9f79a5bab, type: 3}
   RaftPieceID: 2
 --- !u!1 &1708842865
 GameObject:
