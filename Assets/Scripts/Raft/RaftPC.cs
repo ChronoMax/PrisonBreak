@@ -6,8 +6,11 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class RaftPC : MonoBehaviour, IInteractable
 {
-    public GameObject raftPCUI;
+    public GameObject raftPCUI, raftPrefab;
+    public Transform spawnpoint;
     public int CountOfLogs;
+    public Text Count, CountUI;
+    
 
     public void AccesComputer()
     {
@@ -27,14 +30,20 @@ public class RaftPC : MonoBehaviour, IInteractable
         }
     }
 
-    public void AddCount()
+    public void UpdateText()
     {
-
+        CountOfLogs++;
+        Count.text = CountOfLogs.ToString() + "/4";
+        CountUI.text = CountOfLogs.ToString() + "/4";
     }
 
     public void OnClickCraftBoat()
     {
-        //spawnboat at pos.
+        if (CountOfLogs == 4 && CountOfLogs !<= 4)
+        {
+            Instantiate(raftPrefab, spawnpoint);
+        }
+
     }
 
     public void Action(PlayerManager player)
