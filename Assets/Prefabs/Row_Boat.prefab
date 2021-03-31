@@ -11,12 +11,14 @@ GameObject:
   - component: {fileID: 2288773839524395356}
   - component: {fileID: 2912844051940243193}
   - component: {fileID: 1119275841328579123}
+  - component: {fileID: 283721794177931655}
+  - component: {fileID: 2407857279246104740}
   m_Layer: 0
   m_Name: Row_Boat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2288773839524395356
 Transform:
@@ -81,3 +83,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &283721794177931655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479585321094915046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d001959a7792792418aa1e3a2684134c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Row_Boat(Clone)
+  weight: 100
+  sprite: {fileID: 21300000, guid: a425ac9cfed37bd479f4b34b6e0007f0, type: 3}
+  RaftID: 1
+--- !u!65 &2407857279246104740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479585321094915046}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.05108, y: 0.9605627, z: 0.9170792}
+  m_Center: {x: 0, y: -0.015335605, z: 0.42664623}

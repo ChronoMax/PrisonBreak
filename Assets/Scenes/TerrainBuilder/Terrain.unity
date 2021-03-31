@@ -2829,6 +2829,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 139386628337239230, guid: 140b3f0048c99e94eb966cdc04e32c76, type: 3}
+      propertyPath: m_Size.z
+      value: 1.019239
+      objectReference: {fileID: 0}
+    - target: {fileID: 139386628337239230, guid: 140b3f0048c99e94eb966cdc04e32c76, type: 3}
+      propertyPath: m_Center.x
+      value: 0.02967209
+      objectReference: {fileID: 0}
+    - target: {fileID: 139386628337239230, guid: 140b3f0048c99e94eb966cdc04e32c76, type: 3}
+      propertyPath: m_Center.z
+      value: 1.0267472
+      objectReference: {fileID: 0}
     - target: {fileID: 139386628337239231, guid: 140b3f0048c99e94eb966cdc04e32c76, type: 3}
       propertyPath: Count
       value: 
