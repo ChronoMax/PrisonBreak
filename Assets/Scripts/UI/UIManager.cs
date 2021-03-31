@@ -7,16 +7,22 @@ public class UIManager : MonoBehaviour
 {
     public InventoryUI inventoryUI;
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("InventoryButton"))
+        if (Input.GetButtonDown("Inventory"))
         {
-            TroggleInventory();
+            ToggleInventory();
         }
     }
 
-    void TroggleInventory()
+    void ToggleInventory()
     {
         FirstPersonController fps = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
@@ -39,3 +45,4 @@ public class UIManager : MonoBehaviour
         inventoryUI.UpdateUI();
     }
 }
+

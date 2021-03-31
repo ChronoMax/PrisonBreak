@@ -7,6 +7,9 @@ TagManager:
   - Pickup
   - Interactable
   - Computer
+  - ItemUIImage
+  - ItemUITitle
+  - Water
   layers:
   - Default
   - TransparentFX

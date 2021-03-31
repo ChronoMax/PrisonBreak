@@ -51,19 +51,17 @@ public class PlayerManager : MonoBehaviour
         GameManager.Instance.TriggerInventoryUIUpdate();
     }
 
-    public bool AddItem(Item i )
+    public bool AddItem(Item i)
     {
-        return inventory.AddItem(i);
+        bool success = inventory.AddItem(i);
+        if (success)
+        {
+            GameManager.Instance.TriggerInventoryUIUpdate();
+        }
+        return success;
+
     }
 
-    private void OnCollisionEnter(Collision hit)
-    {
-        if (hit.gameObject.CompareTag("Pickup"))
-        {
-            IInteractable i = hit.gameObject.GetComponent<IInteractable>();
-            i.Action(this);
-        }
-    }
     public bool CanOpenDoor(int id)
     {
         return inventory.CanOpenDoor(id);
@@ -73,4 +71,5 @@ public class PlayerManager : MonoBehaviour
     {
         return inventory.GetItemNames();
     }
+
 }

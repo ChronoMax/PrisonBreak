@@ -6,11 +6,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public UIManager ui;
+    public Camera camera;
 
     Dictionary<string, Pickup> worldItems = new Dictionary<string, Pickup>();
 
+    public void Start()
+    {
+        camera.enabled = false;
+    }
+
     private void Awake()
     {
+
         if (Instance == null)
         {
             Instance = this;
