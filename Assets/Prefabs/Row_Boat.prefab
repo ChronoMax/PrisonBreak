@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Row_Boat(Clone)
-  weight: 100
+  weight: 95
   sprite: {fileID: 21300000, guid: a425ac9cfed37bd479f4b34b6e0007f0, type: 3}
   RaftID: 1
 --- !u!65 &2407857279246104740
